@@ -4,7 +4,7 @@ I built this lab to practice the core topics from the CCNA syllabus in one conne
 
 Everything was built and tested in Cisco Packet Tracer. I also broke the network on purpose six times to practice troubleshooting. Those notes are in [troubleshooting.md](troubleshooting.md).
 
-![Topology](screenshots/topology.png)
+![Topology](Screenshots/topology.png)
 
 ## Devices used
 
