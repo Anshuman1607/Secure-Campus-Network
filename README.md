@@ -103,12 +103,6 @@ Full write-up: [troubleshooting.md](troubleshooting.md)
 - Most of my problems came from small mismatches between two ends of a link, like the native VLAN on a trunk. Comparing both ends with `show interfaces trunk` solved it quickly.
 - Turning on a security feature can quietly break something that worked before, so I re-ran the full set of tests after each one.
 
-## Limits and things I would add next
-
-- Router-on-a-stick sends all inter-VLAN traffic over one link. A Layer 3 switch would remove that bottleneck.
-- The native VLAN and the management VLAN are the same (VLAN 99). Best practice is to keep them separate.
-- There is only one core switch and one router, so there is no redundancy yet. HSRP and EtherChannel would be the next step.
-- A second site with OSPF would turn this into a multi-branch design.
 
 ## Files in this repo
 
