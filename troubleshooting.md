@@ -19,7 +19,7 @@ Shortly after the change, the console on SW-Core started printing repeated nativ
 **Root cause**
 The uplink on SW1 (Fa0/24) was back on the default native VLAN 1, while the other end of the trunk was set to VLAN 99. Both ends of a trunk must use the same native VLAN.
 
-![Fault 1: native VLAN mismatch messages](screenshots/fault-1.png)
+![Fault 1: native VLAN mismatch messages](Screenshots/fault-1.png)
 ---
 
 ## Fault 2: DHCP relay missing on a subinterface
@@ -35,7 +35,7 @@ A Sales PC that renewed its address came back with a 169.254.x.x address and had
 **Root cause**
 `ip helper-address 192.168.40.10` was missing from the Fa0/0.10 subinterface, so the router never forwarded the Sales PCs' DHCP broadcasts to the server in VLAN 40.
 
-![Fault 2: PC with a 169.254 address](screenshots/fault-2.png)
+![Fault 2: PC with a 169.254 address](Screenshots/fault-2.png)
 ---
 
 ## Fault 3: PC port in the wrong VLAN
@@ -51,7 +51,7 @@ One Sales PC could not reach its gateway or any other device outside its own por
 **Root cause**
 The access port was configured with `switchport access vlan 20` instead of `switchport access vlan 10`.
 
-![Fault 3: PC port in the wrong VLAN](screenshots/fault-3.png)
+![Fault 3: PC port in the wrong VLAN](Screenshots/fault-3.png)
 ---
 
 ## Fault 4: VLAN missing from the trunk allowed list
@@ -67,7 +67,7 @@ Sales PCs could not reach their gateway or each other across switches. Every oth
 **Root cause**
 VLAN 10 had been removed from the allowed VLAN list on the SW-Core trunk (`switchport trunk allowed vlan remove 10`), so tagged VLAN 10 frames were not allowed to cross the link.
 
-![Fault 4: VLAN missing from the trunk](screenshots/fault-4.png)
+![Fault 4: VLAN missing from the trunk](Screenshots/fault-4.png)
 ---
 
 ## Fault 5: Wrong encapsulation number on a subinterface
@@ -83,7 +83,7 @@ IT PCs could not ping their gateway (192.168.30.1) or anything outside VLAN 30. 
 **Root cause**
 Subinterface Fa0/0.30 was set to `encapsulation dot1Q 31`. The IT PCs send frames tagged with VLAN 30, so the router never matched them to a subinterface, and nothing answered for the gateway address.
 
-![Fault 5: wrong encapsulation number](screenshots/fault-5.png)
+![Fault 5: wrong encapsulation number](Screenshots/fault-5.png)
 ---
 
 ## Fault 6: Default route missing on R1
@@ -99,7 +99,7 @@ All internal VLANs could still reach each other and the server, but nobody could
 **Root cause**
 The static default route `ip route 0.0.0.0 0.0.0.0 203.0.113.1` had been removed, so R1 had no path for traffic to any outside network.
 
-![Fault 6: no default route, ping fails](screenshots/fault-6.png)
+![Fault 6: no default route, ping fails](Screenshots/fault-6.png)
 ---
 
 ## The method I followed each time
